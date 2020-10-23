@@ -95,10 +95,10 @@ int  main(){
                     jugadores[3].pos = ptr[3];
                     sleep(2);
                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
-                    signo = 2; //verificar_signo(jugadores[0].pos);
+                    signo = verificar_signo(jugadores[0].pos);
                     desea = jugador_desea(signo);
                     if (desea == 1){
-                        efecto = 1; //efecto_aleatorio(signo);
+                        efecto = efecto_aleatorio(signo);
                         if (signo == 1){
                             if (efecto == 1){
                                 ptr[0] = jugador_retrocede(jugadores[0].pos, 1);
