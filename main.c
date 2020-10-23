@@ -398,7 +398,7 @@ int  main(){
                     numero = dado();
                     jugadores[1].pos += numero;
                     if (jugadores[1].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[1].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 2");
@@ -423,7 +423,7 @@ int  main(){
                     numero = dado();
                     jugadores[0].pos += numero;
                     if (jugadores[0].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[0].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 1");
@@ -446,7 +446,7 @@ int  main(){
                     numero = dado();
                     jugadores[2].pos += numero;
                     if (jugadores[2].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[2].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 3");
@@ -471,7 +471,7 @@ int  main(){
                     numero = dado();
                     jugadores[3].pos += numero;
                     if (jugadores[3].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[3].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 4");
@@ -496,7 +496,7 @@ int  main(){
                     numero = dado();
                     jugadores[2].pos += numero;
                     if (jugadores[2].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[2].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 3");
@@ -521,7 +521,7 @@ int  main(){
                     numero = dado();
                     jugadores[0].pos += numero;
                     if (jugadores[0].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[0].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 1");
@@ -544,7 +544,7 @@ int  main(){
                     numero = dado();
                     jugadores[1].pos += numero;
                     if (jugadores[1].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[1].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 2");
@@ -569,7 +569,7 @@ int  main(){
                     numero = dado();
                     jugadores[3].pos += numero;
                     if (jugadores[3].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[3].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 4");
@@ -594,7 +594,7 @@ int  main(){
                     numero = dado();
                     jugadores[3].pos += numero;
                     if (jugadores[3].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[3].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 4");
@@ -617,7 +617,7 @@ int  main(){
                     numero = dado();
                     jugadores[0].pos += numero;
                     if (jugadores[0].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[0].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 1");
@@ -640,7 +640,7 @@ int  main(){
                     numero = dado();
                     jugadores[1].pos += numero;
                     if (jugadores[1].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[1].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 2");
@@ -665,7 +665,7 @@ int  main(){
                     numero = dado();
                     jugadores[2].pos += numero;
                     if (jugadores[2].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
                         jugadores[2].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 3");
@@ -718,6 +718,7 @@ int  main(){
     close(pipe42[WRITE]);
     close(pipe43[READ]);
     close(pipe43[WRITE]);
+    free(jugadores);
 
     shmdt((char *)id);
     shmctl(id,IPC_RMID,0);
