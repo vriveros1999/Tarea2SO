@@ -12,9 +12,9 @@ int  main(){
     int pipe41[2], pipe42[2], pipe43[2];
     key_t clave;
     long int id;
+    int flag = 1;
     int *ptr = NULL;
     pid_padre = getpid();
-    int flag = 1;
     Jugador *jugadores = (Jugador*)malloc(sizeof(Jugador)*4);
 
     clave = ftok("/bin/ls", 33);
@@ -63,6 +63,7 @@ int  main(){
     ptr[1] = jugadores[1].pos;
     ptr[2] = jugadores[2].pos;
     ptr[3] = jugadores[3].pos;
+    ptr[4] = 1;
 
     if(op==1){
         if(pid_padre == getpid()){
@@ -74,7 +75,7 @@ int  main(){
         }
     }
 
-    while(flag == 1){
+    while(ptr[4] == 1){
         if (op == 1){
             if (pid_padre == getpid()){
                 while (flag1 == 1){
@@ -84,7 +85,8 @@ int  main(){
                     numero = dado();
                     jugadores[0].pos += numero;
                     if (jugadores[0].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
+                        flag1 = 0;
                         jugadores[0].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 1");
@@ -104,6 +106,7 @@ int  main(){
                             if (efecto == 1){
                                 ptr[0] = jugador_retrocede(jugadores[0].pos, 1);
                                 printf("El jugador retrocedio 1 espacio\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 2;
@@ -114,6 +117,7 @@ int  main(){
                                 ptr[2] = jugador_retrocede(jugadores[2].pos, 1);
                                 ptr[3] = jugador_retrocede(jugadores[3].pos, 1);
                                 printf("Todos los jugadores retroceden 1 espacio\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 2;
@@ -121,6 +125,7 @@ int  main(){
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if(efecto == 3){
                                 printf("Efecto 3\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 2;
@@ -128,6 +133,7 @@ int  main(){
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if(efecto == 4){
                                 printf("El siguiente jugador no juega su turno\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 0;
@@ -135,6 +141,7 @@ int  main(){
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if(efecto == 5){
                                 printf("Cambio en el sentido de los turnos\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 2;
@@ -144,6 +151,7 @@ int  main(){
                         }else if (signo == 2){
                             if (efecto == 1 || efecto == 2 || efecto == 3){
                                 printf("Todos los jugadores retroceden 2 espacios\n");
+                                sleep(2);
                                 ptr[0] = jugador_retrocede(jugadores[0].pos, 2);
                                 ptr[1] = jugador_retrocede(jugadores[1].pos, 2);
                                 ptr[2] = jugador_retrocede(jugadores[2].pos, 2);
@@ -155,21 +163,25 @@ int  main(){
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Efecto 2 ??\n");
+                                sleep(2);
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if (efecto == 6 || efecto == 7){
                                 printf("Efecto 3 ??\n");
+                                sleep(2);
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if (efecto == 8 || efecto == 9){
                                 printf("Efecto 4 ??\n");
+                                sleep(2);
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if (efecto == 10){
                                 printf("Efecto 5 ??\n");
+                                sleep(2);
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -190,7 +202,8 @@ int  main(){
                         numero = dado();
                         jugadores[1].pos += numero;
                         if (jugadores[1].pos >= 29){
-                            flag = 0;
+                            ptr[4] = 0;
+                            flag2 = 0;
                             jugadores[1].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                             printf("El ganador es el jugador 2");
@@ -210,6 +223,7 @@ int  main(){
                             if (efecto == 1){
                                 ptr[1] = jugador_retrocede(jugadores[1].pos, 1);
                                 printf("El jugador retrocedio 1 espacio\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 3;
@@ -222,6 +236,7 @@ int  main(){
                                 ptr[2] = jugador_retrocede(jugadores[2].pos, 1);
                                 ptr[3] = jugador_retrocede(jugadores[3].pos, 1);
                                 printf("Todos los jugadores retroceden 1 espacio\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 3;
@@ -231,6 +246,7 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if(efecto == 3){
                                 printf("Efecto 3\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 3;
@@ -240,6 +256,7 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if(efecto == 4){
                                 printf("El siguiente jugador no juega su turno\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 0;
@@ -249,6 +266,7 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if(efecto == 5){
                                 printf("Cambio en el sentido de los turnos\n");
+                                sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 3;
@@ -262,6 +280,7 @@ int  main(){
                             sleep(2);
                             if (efecto == 1 || efecto == 2 || efecto == 3){
                                 printf("Todos los jugadores retroceden 2 espacios\n");
+                                sleep(2);
                                 ptr[0] = jugador_retrocede(jugadores[0].pos, 2);
                                 ptr[1] = jugador_retrocede(jugadores[1].pos, 2);
                                 ptr[2] = jugador_retrocede(jugadores[2].pos, 2);
@@ -275,6 +294,7 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Efecto 2 ??\n");
+                                sleep(2);
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -282,6 +302,7 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if (efecto == 6 || efecto == 7){
                                 printf("Efecto 3 ??\n");
+                                sleep(2);
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -289,6 +310,7 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if (efecto == 8 || efecto == 9){
                                 printf("Efecto 4 ??\n");
+                                sleep(2);
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -296,6 +318,7 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if (efecto == 10){
                                 printf("Efecto 5 ??\n");
+                                sleep(2);
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -324,7 +347,8 @@ int  main(){
                     numero = dado();
                     jugadores[2].pos += numero;
                     if (jugadores[2].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
+                        flag3 = 0;
                         jugadores[2].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 3");
@@ -349,7 +373,8 @@ int  main(){
                     numero = dado();
                     jugadores[3].pos += numero;
                     if (jugadores[3].pos >= 29){
-                        flag = 0;
+                        ptr[4] = 0;
+                        flag4 = 0;
                         jugadores[3].pos = 29;
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
                         printf("El ganador es el jugador 4");
