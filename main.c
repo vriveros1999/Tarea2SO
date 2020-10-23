@@ -12,7 +12,6 @@ int  main(){
     int pipe41[2], pipe42[2], pipe43[2];
     key_t clave;
     long int id;
-    int flag = 1;
     int *ptr = NULL;
     pid_padre = getpid();
     Jugador *jugadores = (Jugador*)malloc(sizeof(Jugador)*4);
