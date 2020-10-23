@@ -306,3 +306,49 @@ int jugador_avanza(int posicion, int espacios,int opcion){
 	}
 	return 0;
 }
+
+int ultimo(int pos1, int pos2, int pos3, int pos4){
+	int ultimo1 = 0;
+	int posicion;
+	if (pos1 <= pos2){
+		ultimo1 = 0;
+		posicion = pos1;
+	}else{
+		ultimo1 = 1;
+		posicion = pos2;
+	}
+
+	if (posicion > pos3){
+		ultimo1 = 2;
+		posicion = pos3;
+	}
+
+	if (posicion > pos4){
+		ultimo1 = 3;
+		posicion = pos4;
+	}
+	return ultimo1;
+}
+
+int primero(int pos1, int pos2, int pos3, int pos4){
+	int primero1 = 0;
+	int posicion;
+	if (pos1 > pos2){
+		primero1 = 0;
+		posicion = pos1;
+	}else{
+		primero1 = 1;
+		posicion = pos2;
+	}
+
+	if (posicion < pos3){
+		primero1 = 2;
+		posicion = pos3;
+	}
+
+	if (posicion < pos4){
+		primero1 = 3;
+		posicion = pos4;
+	}
+	return primero1;
+}

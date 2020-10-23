@@ -5,7 +5,7 @@
 
 int  main(){
     pid_t pid, pid_hijos[2], pid_padre;
-    int op, mensaje, numero, signo, desea, efecto, flag1 = 1, flag2 = 1, flag3 = 1, flag4 = 1; 
+    int op, mensaje, numero, signo, ultimo1, aux, desea, efecto, flag1 = 1, flag2 = 1, flag3 = 1, flag4 = 1; 
     int pipe12[2], pipe13[2], pipe14[2];
     int pipe21[2], pipe23[2], pipe24[2];
     int pipe31[2], pipe32[2], pipe34[2];
@@ -181,16 +181,30 @@ int  main(){
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if (efecto == 6 || efecto == 7){
-                                printf("Efecto 3 ??\n");
+                                printf("Jugador cambia posicion con el ultimo\n");
                                 sleep(2);
+                                ultimo1 = ultimo(jugadores[0].pos, jugadores[1].pos, jugadores[2].pos, jugadores[3].pos);
+                                if (ultimo1 != 0){
+                                    aux = jugadores[0].pos;
+                                    ptr[0] = jugadores[ultimo1].pos;
+                                    ptr[ultimo1] = aux;
+                                }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2); 
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if (efecto == 8 || efecto == 9){
-                                printf("Efecto 4 ??\n");
+                                printf("Jugador cambia posicion con el primero\n");
                                 sleep(2);
+                                ultimo1 = primero(jugadores[0].pos, jugadores[1].pos, jugadores[2].pos, jugadores[3].pos);
+                                if (ultimo1 != 0){
+                                    aux = jugadores[0].pos;
+                                    ptr[0] = jugadores[ultimo1].pos;
+                                    ptr[ultimo1] = aux;
+                                }
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2); 
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -373,6 +387,7 @@ int  main(){
                 while (flag3 == 1){
                     read(pipe23[READ], &jugadores[2].turno, sizeof(int));
                     printf("Turno del jugador 3\n");
+                    jugadores[2].pos = ptr[2];
                     numero = dado();
                     jugadores[2].pos += numero;
                     if (jugadores[2].pos >= 29){
@@ -399,6 +414,7 @@ int  main(){
                 while (flag4 == 1){
                     read(pipe34[READ], &jugadores[3].turno, sizeof(int));
                     printf("Turno del jugador 4\n");
+                    jugadores[3].pos = ptr[3];
                     numero = dado();
                     jugadores[3].pos += numero;
                     if (jugadores[3].pos >= 29){
