@@ -285,3 +285,24 @@ int jugador_retrocede(int posicion, int espacios){
 	}
 	return retrocedio;
 }
+
+int jugador_avanza(int posicion, int espacios,int opcion){
+	int avanza;
+	if(opcion==1){
+		avanza = posicion+espacios;
+	    return avanza;
+	}
+	if(opcion==2){
+		if(posicion==2 || posicion==4 || posicion==6 || posicion==12 || posicion==14 || posicion==16){
+			avanza=posicion+2;
+		}
+		else if(posicion >= 21){
+			return posicion;
+		}
+		else {
+			avanza=posicion+espacios;
+		}
+		return avanza;
+	}
+	return 0;
+}

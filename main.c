@@ -115,7 +115,7 @@ int  main(){
                                 ptr[1] = jugador_retrocede(jugadores[1].pos, 1);
                                 ptr[2] = jugador_retrocede(jugadores[2].pos, 1);
                                 ptr[3] = jugador_retrocede(jugadores[3].pos, 1);
-                                printf("Todos los jugadores retroceden 1 espacio\n");
+                                printf("Los demas jugadores retroceden 1 espacio\n");
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
@@ -123,8 +123,17 @@ int  main(){
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if(efecto == 3){
-                                printf("Efecto 3\n");
+                                printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1, 1);
+                                if (jugadores[0].pos >= 29){
+                                    ptr[4] = 0;
+                                    flag1 = 0;
+                                    jugadores[0].pos = 29;
+                                    tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
+                                    printf("El ganador es el jugador 1");
+                                    return 0;
+                                }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 2;
@@ -161,14 +170,21 @@ int  main(){
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if (efecto == 4 || efecto == 5){
-                                printf("Efecto 2 ??\n");
+                                printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2); 
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if (efecto == 6 || efecto == 7){
                                 printf("Efecto 3 ??\n");
                                 sleep(2);
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2); 
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -234,7 +250,7 @@ int  main(){
                                 ptr[0] = jugador_retrocede(jugadores[0].pos, 1);
                                 ptr[2] = jugador_retrocede(jugadores[2].pos, 1);
                                 ptr[3] = jugador_retrocede(jugadores[3].pos, 1);
-                                printf("Todos los jugadores retroceden 1 espacio\n");
+                                printf("Los demas jugadores retroceden 1 espacio\n");
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
@@ -244,8 +260,17 @@ int  main(){
                                 read(pipe32[READ], &flag2, sizeof(int));
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if(efecto == 3){
-                                printf("Efecto 3\n");
+                                printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1, 1);
+                                if (jugadores[1].pos >= 29){
+                                    ptr[4] = 0;
+                                    flag2 = 0;
+                                    jugadores[1].pos = 29;
+                                    tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
+                                    printf("El ganador es el jugador 2");
+                                    return 0;
+                                }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
                                 sleep(2);
                                 mensaje = 3;
@@ -292,8 +317,13 @@ int  main(){
                                 read(pipe32[READ], &flag2, sizeof(int));
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if (efecto == 4 || efecto == 5){
-                                printf("Efecto 2 ??\n");
+                                printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2); 
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
