@@ -104,6 +104,8 @@ int  main(){
                             if (efecto == 1){
                                 ptr[0] = jugador_retrocede(jugadores[0].pos, 1);
                                 printf("El jugador retrocedio 1 espacio\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -112,21 +114,29 @@ int  main(){
                                 ptr[2] = jugador_retrocede(jugadores[2].pos, 1);
                                 ptr[3] = jugador_retrocede(jugadores[3].pos, 1);
                                 printf("Todos los jugadores retroceden 1 espacio\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if(efecto == 3){
                                 printf("Efecto 3\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if(efecto == 4){
                                 printf("El siguiente jugador no juega su turno\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 0;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
                             }else if(efecto == 5){
                                 printf("Cambio en el sentido de los turnos\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -200,6 +210,8 @@ int  main(){
                             if (efecto == 1){
                                 ptr[1] = jugador_retrocede(jugadores[1].pos, 1);
                                 printf("El jugador retrocedio 1 espacio\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -210,6 +222,8 @@ int  main(){
                                 ptr[2] = jugador_retrocede(jugadores[2].pos, 1);
                                 ptr[3] = jugador_retrocede(jugadores[3].pos, 1);
                                 printf("Todos los jugadores retroceden 1 espacio\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -217,6 +231,8 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if(efecto == 3){
                                 printf("Efecto 3\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -224,6 +240,8 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if(efecto == 4){
                                 printf("El siguiente jugador no juega su turno\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 0;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -231,6 +249,8 @@ int  main(){
                                 write(pipe21[WRITE], &flag1, sizeof(int));
                             }else if(efecto == 5){
                                 printf("Cambio en el sentido de los turnos\n");
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
