@@ -80,6 +80,7 @@ int  main(){
                 while (flag1 == 1){
                     jugadores[0].turno = 1;
                     printf("Turno del jugador 1 (Principal)\n");
+                    jugadores[0].pos = ptr[0];
                     numero = dado();
                     jugadores[0].pos += numero;
                     if (jugadores[0].pos >= 29){
@@ -191,12 +192,110 @@ int  main(){
                         ptr[1] = jugadores[1].pos;
                         sleep(3);
                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos);
+                        signo = verificar_signo(jugadores[1].pos);
+                        efecto = efecto_aleatorio(signo);
+                        if (signo == 1){
+                            printf("Jugador cayo en ?\n");
+                            sleep(2);
+                            if (efecto == 1){
+                                ptr[1] = jugador_retrocede(jugadores[1].pos, 1);
+                                printf("El jugador retrocedio 1 espacio\n");
+                                mensaje = 3;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }else if(efecto == 2){
+                                ptr[0] = jugador_retrocede(jugadores[0].pos, 1);
+                                ptr[2] = jugador_retrocede(jugadores[2].pos, 1);
+                                ptr[3] = jugador_retrocede(jugadores[3].pos, 1);
+                                printf("Todos los jugadores retroceden 1 espacio\n");
+                                mensaje = 3;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }else if(efecto == 3){
+                                printf("Efecto 3\n");
+                                mensaje = 3;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }else if(efecto == 4){
+                                printf("El siguiente jugador no juega su turno\n");
+                                mensaje = 0;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }else if(efecto == 5){
+                                printf("Cambio en el sentido de los turnos\n");
+                                mensaje = 3;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }
+                        }else if (signo == 2){
+                            printf("Jugador cayo en ??\n");
+                            sleep(2);
+                            if (efecto == 1 || efecto == 2 || efecto == 3){
+                                printf("Todos los jugadores retroceden 2 espacios\n");
+                                ptr[0] = jugador_retrocede(jugadores[0].pos, 2);
+                                ptr[1] = jugador_retrocede(jugadores[1].pos, 2);
+                                ptr[2] = jugador_retrocede(jugadores[2].pos, 2);
+                                ptr[3] = jugador_retrocede(jugadores[3].pos, 2);
+                                tablero(ptr[0], ptr[1], ptr[2], ptr[3]);
+                                sleep(2);
+                                mensaje = 3;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }else if (efecto == 4 || efecto == 5){
+                                printf("Efecto 2 ??\n");
+                                mensaje = 3;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }else if (efecto == 6 || efecto == 7){
+                                printf("Efecto 3 ??\n");
+                                mensaje = 3;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }else if (efecto == 8 || efecto == 9){
+                                printf("Efecto 4 ??\n");
+                                mensaje = 3;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }else if (efecto == 10){
+                                printf("Efecto 5 ??\n");
+                                mensaje = 3;
+                                write(pipe23[WRITE], &mensaje, sizeof(int));
+                                flag1 = 0;
+                                read(pipe32[READ], &flag2, sizeof(int));
+                                write(pipe21[WRITE], &flag1, sizeof(int));
+                            }
+                        }else{
+                            mensaje = 3;
+                            write(pipe23[WRITE], &mensaje, sizeof(int));
+                            flag1 = 0;
+                            read(pipe32[READ], &flag2, sizeof(int));
+                            write(pipe21[WRITE], &flag1, sizeof(int));
+                        }
+                    }else{
+                        mensaje = 3;
+                        write(pipe23[WRITE], &mensaje, sizeof(int));
+                        flag1 = 0;
+                        read(pipe32[READ], &flag2, sizeof(int));
+                        write(pipe21[WRITE], &flag1, sizeof(int));
                     }
-                    mensaje = 3;
-                    write(pipe23[WRITE], &mensaje, sizeof(int));
-                    flag1 = 0;
-                    read(pipe32[READ], &flag2, sizeof(int));
-                    write(pipe21[WRITE], &flag1, sizeof(int));
                 }
             }else if (pid_hijos[1] == getpid()){
                 while (flag3 == 1){
