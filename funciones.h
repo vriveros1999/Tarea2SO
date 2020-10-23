@@ -53,7 +53,7 @@ void string(int n1, int n2, int n3, int n4, int pos, char *str){
 	}
 }
 
-void concateno2(char *tablero,int n,int n1, int n2, int n3, int n4, char *str){
+void concateno2(char *tablero,int n,int n1, int n2, int n3, int n4, char *str, int invertido){
 	if(n==1){
 		int pos=20;
 		string(n1,n2,n3,n4,pos,str);
@@ -77,66 +77,156 @@ void concateno2(char *tablero,int n,int n1, int n2, int n3, int n4, char *str){
 	}
 }
 
-void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str){
+void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str, int invertido){
 	int pos=1;
 	int largo=9;
 	char *intermedio=(char *)malloc(sizeof(char)*200);
 	if(n==1){
 		strcat(tablero,"\n ____________________________________________\n");
-		if(n1>=21){
-			n1=n1-20;
+		if(invertido==1){
+			if(n1<10){
+				n1=10-n1;
+			}
+			else{
+				n1=0;
+			}
+			if(n2<10){
+				n2=10-n2;
+			}
+			else{
+				n2=0;
+			}
+			if(n3<10){
+				n3=10-n3;
+			}
+			else{
+				n3=0;
+			}
+			if(n4<10){
+				n4=10-n4;
+			}
+			else{
+				n4=0;
+			}
 		}
-		else{
-			n1=0;
-		}
-		if(n2>=21){
-			n2=n2-20;
-		}
-		else{
-			n2=0;
-		}
-		if(n3>=21){
-			n3=n3-20;
-		}
-		else{
-			n3=0;
-		}
-		if(n4>=21){
-			n4=n4-20;
-		}
-		else{
-			n4=0;
+		if(invertido==0){
+			if(n1>=21){
+				n1=n1-20;
+			}
+			else{
+			    n1=0;
+		    }
+		    if(n2>=21){
+			    n2=n2-20;
+		    }
+		    else{
+		   	    n2=0;
+		    }
+		    if(n3>=21){
+			    n3=n3-20;
+		    }
+		    else{
+			    n3=0;
+		    }
+		    if(n4>=21){
+			    n4=n4-20;
+		    }
+		    else{
+			    n4=0;
+		    }
+
 		}
 	}
 	if(n==2){
 		strcat(tablero,"_______________________________________ \n");
-		if(n1>10 || n1<19){
-			n1=20-n1;
+		if(invertido==1){
+			if(n1>10 || n1<19){
+				n1=n1-10;
+			}
+			else{
+				n1=0;
+			}
+			if(n2>10 || n2<19){
+				n2=n2-10;
+			}
+			else{
+				n2=0;
+			}
+			if(n3>10 || n3<19){
+				n3=n3-10;
+			}
+			else{
+				n3=0;
+			}
+			if(n4>10 || n4<19){
+				n4=n4-10;
+			}
+			else{
+				n4=0;
+			}
 		}
-		else{
-			n1=0;
+		if(invertido==0){
+
+		    if(n1>10 || n1<19){
+			    n1=20-n1;
+		    }
+		    else{
+			    n1=0;
+		    }
+		    if(n1>10 || n1<19){
+			    n2=20-n2;
+		    }
+		    else{
+			    n2=0;
+		    }
+		    if(n1>10 || n1<19){
+			    n3=20-n3;
+		    }
+		    else{
+			    n3=0;
+		    }
+		    if(n1>10 || n1<19){
+			    n4=20-n4;
+		    }
+		    else{
+			    n4=0;
+		    }
 		}
-		if(n1>10 || n1<19){
-			n2=20-n2;
-		}
-		else{
-			n2=0;
-		}
-		if(n1>10 || n1<19){
-			n3=20-n3;
-		}
-		else{
-			n3=0;
-		}
-		if(n1>10 || n1<19){
-			n4=20-n4;
-		}
-		else{
-			n4=0;
-		}
+		
 	}
 	if(n==3){
-		strcat(tablero,"\n");
+		if (invertido==1){
+			strcat(tablero,"\n");
+			if(n1>20 && n1<30){
+			    n1=30-n1;
+		    }
+		    else{
+		    	n1=0;
+		    }
+		    if(n2>20 && n2<30){
+			    n2=30-n2;
+		    }
+		    else{
+		    	n2=0;
+		    }
+		    if(n3>20 && n3<30){
+			    n3=30-n3;
+		    }
+		    else{
+		    	n3=0;
+		    }
+		    if(n4>20 && n4<30){
+			    n4=30-n4;
+		    }
+		    else{
+		    	n4=0;
+		    }
+		}
+		if(invertido==0){
+			strcat(tablero,"\n");
+
+		}
+
 
 	}
 	while (largo>0){
@@ -153,29 +243,77 @@ void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str){
 	while (largo>0){
 		if (n==3){
 			if(largo==3 || largo==5 || largo==7){
-				strcat(intermedio,"|  ? ");
+				if(invertido==1){
+					strcat(intermedio,"| ?? ");
+
+				}
+				if(invertido==0){
+					strcat(intermedio,"|  ? ");
+
+				}
 			}
 			if(largo==9){
-				strcat(intermedio,"|IN >");
+				if(invertido==1){
+					strcat(intermedio,"| FIN");
+
+				}
+				if(invertido==0){
+					strcat(intermedio,"|IN >");
+
+				}
+
 			}
 			if(largo==1){
-				strcat(intermedio,"|  ^ ");
+				if(invertido==1){
+					strcat(intermedio,"|  < ");
+				}
+				if(invertido==0){
+					strcat(intermedio,"|  > ");
+
+				}
 			}
 			if(largo == 2 || largo == 4 || largo == 6 || largo == 8 )
 				strcat(intermedio,"|    ");
 		}
 		if (n==2){
 			if(largo==7){
-				strcat(intermedio,"| ?? ");
+				if(invertido==1){
+					strcat(intermedio,"| ?  ");
+
+				}
+				if(invertido==0){
+					strcat(intermedio,"| ?? ");
+
+				}
 			}
 			if(largo==3 || largo==5){
-				strcat(intermedio,"|  ? ");
+				if(invertido==1){
+					strcat(intermedio,"| ?? ");
+
+				}
+				if(invertido==0){
+					strcat(intermedio,"|  ? ");
+				}
 			}
 			if (largo== 9){
-				strcat(intermedio,"|  ^ ");
+				if(invertido==1){
+					strcat(intermedio,"|  > ");
+
+				}
+				if(invertido==0){
+					strcat(intermedio,"|  ^ ");
+
+				}
 			}
 			if (largo== 1){
-				strcat(intermedio,"|  < ");
+				if(invertido==1){
+					strcat(intermedio,"|  v ");
+
+				}
+				if (invertido==0){
+					strcat(intermedio,"|  < ");
+
+				}
 			}
 			if( largo==8 || largo==6 || largo==4 || largo==2){
 				strcat(intermedio,"|    ");
@@ -183,16 +321,46 @@ void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str){
 		}
 		if (n==1){
 			if(largo==3 || largo==5 || largo==7){
-				strcat(intermedio,"| ?? ");
+				if(invertido==1){
+					strcat(intermedio,"| ?  ");
+
+				}
+				if(invertido==0){
+					strcat(intermedio,"| ?? ");
+
+				}
+
 			}
 			if(largo==2 || largo==4 || largo==6 || largo==8){
-				strcat(intermedio,"|  ? ");
+				if (invertido==1){
+					strcat(intermedio,"| ?? ");
+
+				}
+				if(invertido==0){
+					strcat(intermedio,"|  ? ");
+
+				}
 			}
 			if(largo==9){
-				strcat(intermedio,"|  > ");
+				if(invertido==1){
+					strcat(intermedio,"|  v ");
+
+				}
+				if(invertido==0){
+					strcat(intermedio,"|  > ");
+
+				}
+
 			}
 			if(largo==1){
-				strcat(intermedio,"| FIN");
+				if(invertido==1){
+					strcat(intermedio,"| IN ");
+
+				}
+				if(invertido==0){
+					strcat(intermedio,"| FIN");
+
+				}
 			}
 		}
 		largo--;
@@ -208,14 +376,14 @@ void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str){
 	free(intermedio);
 }
 
-void tablero(int n1,int n2, int n3, int n4){
+void tablero(int n1,int n2, int n3, int n4, int invertido){
     char *str=(char *)malloc(sizeof(char)*6);
 	char *tablero=(char *)malloc(sizeof(char)*700);
-	concateno(tablero,1,n1,n2,n3,n4,str);
-	concateno2(tablero,1,n1,n2,n3,n4,str);
-	concateno(tablero,2,n1,n2,n3,n4,str);
-	concateno2(tablero,2,n1,n2,n3,n4,str);
-	concateno(tablero,3,n1,n2,n3,n4,str);
+	concateno(tablero,1,n1,n2,n3,n4,str,invertido);
+	concateno2(tablero,1,n1,n2,n3,n4,str,invertido);
+	concateno(tablero,2,n1,n2,n3,n4,str,invertido);
+	concateno2(tablero,2,n1,n2,n3,n4,str,invertido);
+	concateno(tablero,3,n1,n2,n3,n4,str,invertido);
 	printf("%s\n",tablero);
 	free(tablero);
 	free(str);
