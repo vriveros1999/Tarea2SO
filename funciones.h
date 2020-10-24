@@ -392,20 +392,30 @@ void tablero(int n1,int n2, int n3, int n4, int invertido){
 int dado(){
     srand(time(NULL));
     int numero = (rand() % 6) + 1;
-    sleep(2);
+	sleep(2);
     printf("El numero obtenido es: %d\n", numero);
     return numero;
 }
 
-int verificar_signo(int posicion){
-	if (posicion == 3 || posicion == 5 || posicion == 7 || posicion == 13 || posicion == 15 || posicion == 22 || posicion == 24 || posicion == 26 || posicion == 28){
-		return 1;
-	}else if (posicion == 17 || posicion == 23 || posicion == 25 || posicion == 27){
-		return 2;
+int verificar_signo(int posicion, int tablero){
+	if (tablero == 0){
+		if (posicion == 3 || posicion == 5 || posicion == 7 || posicion == 13 || posicion == 15 || posicion == 22 || posicion == 24 || posicion == 26 || posicion == 28){
+			return 1;
+		}else if (posicion == 17 || posicion == 23 || posicion == 25 || posicion == 27){
+			return 2;
+		}
+		else{
+			return 0;
+		}
+	}else if (tablero == 1){
+		if (posicion == 3 || posicion == 5 || posicion == 7 || posicion == 13){
+			return 1;
+		}else if (posicion == 2 || posicion == 4 || posicion == 6 || posicion == 8 || posicion == 15 || posicion == 17 || posicion == 23 || posicion == 25 || posicion == 27){
+			return 2;
+		}
 	}
-	else{
-		return 0;
-	}
+	return 0;
+	
 }
 
 int jugador_desea(int signo){
