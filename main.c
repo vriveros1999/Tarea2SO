@@ -65,6 +65,11 @@ int  main(){
     ptr[4] = 1;
     ptr[5] = 0;
     ptr[6] = 1;
+    ptr[7] = 1;
+    ptr[8] = 1;
+    ptr[9] = 1;
+    ptr[10] = 1;
+    ptr[11] = 0;
 
     if(op==1){
         if(pid_padre == getpid()){
@@ -81,9 +86,14 @@ int  main(){
             if (pid_padre == getpid()){
                 while (flag1 == 1){
                     jugadores[0].turno = ptr[6];
-                    if (jugadores[0].turno != 0){
-                        ptr[6] = 1;
+                    if (jugadores[0].turno != 0 && ptr[7] == 1){
                         printf("Turno del jugador 1 (Principal)\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 0;
+                            ptr[9] = 0;
+                            ptr[10] = 1;
+                        }
                         jugadores[0].pos = ptr[0];
                         numero = dado();
                         jugadores[0].pos += numero;
@@ -157,6 +167,19 @@ int  main(){
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2);
                                     mensaje = 2;
+                                    if (ptr[11] == 0){
+                                        ptr[11] = 1;
+                                        ptr[7] = 0;
+                                        ptr[8] = 0;
+                                        ptr[9] = 0;
+                                        ptr[10] = 1;
+                                    }else{
+                                        ptr[11] = 0;
+                                        ptr[7] = 1;
+                                        ptr[8] = 1;
+                                        ptr[9] = 1;
+                                        ptr[10] = 1;
+                                    }
                                     write(pipe12[WRITE], &mensaje, sizeof(int));
                                     read(pipe21[READ], &flag1, sizeof(int));
                                 }
@@ -241,6 +264,7 @@ int  main(){
                             read(pipe21[READ], &flag1, sizeof(int));
                         }
                     }else{
+                        ptr[6] = 1;
                         mensaje = 2;
                         write(pipe12[WRITE], &mensaje, sizeof(int));
                         read(pipe21[READ], &flag1, sizeof(int));
@@ -249,8 +273,14 @@ int  main(){
             }else if (pid_hijos[0] == getpid()){
                 while (flag2 == 1){
                     read(pipe12[READ], &jugadores[1].turno, sizeof(int));
-                    if (jugadores[1].turno != 0){
+                    if (jugadores[1].turno != 0 && ptr[8] == 1){
                         printf("Turno del jugador 2\n");
+                        if (ptr[11] == 1){
+                            ptr[9] = 0;
+                            ptr[10] = 0;
+                            ptr[7] = 1;
+                            ptr[8] = 0;
+                        }
                         jugadores[1].pos = ptr[1];
                         numero = dado();
                         jugadores[1].pos += numero;
@@ -331,6 +361,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 0;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -441,8 +484,14 @@ int  main(){
             }else if (pid_hijos[1] == getpid()){
                 while (flag3 == 1){
                     read(pipe23[READ], &jugadores[2].turno, sizeof(int));
-                    if (jugadores[2].turno != 0){
+                    if (jugadores[2].turno != 0 && ptr[9] == 1){
                         printf("Turno del jugador 3\n");
+                        if (ptr[11] == 1){
+                            ptr[10] = 0;
+                            ptr[7] = 0;
+                            ptr[8] = 1;
+                            ptr[9] = 0;
+                        }
                         jugadores[2].pos = ptr[2];
                         numero = dado();
                         jugadores[2].pos += numero;
@@ -523,6 +572,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[10] = 0;
+                                    ptr[7] = 0;
+                                    ptr[8] = 1;
+                                    ptr[9] = 0;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 4;
                                 write(pipe34[WRITE], &mensaje, sizeof(int));
                                 flag2 = 0;
@@ -633,7 +695,13 @@ int  main(){
             }else if (pid_hijos[2] == getpid()){
                 while (flag4 == 1){
                     read(pipe34[READ], &jugadores[3].turno, sizeof(int));
-                    if (jugadores[3].turno != 0){
+                    if (jugadores[3].turno != 0 && ptr[10] == 1){
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 0;
+                            ptr[9] = 1;
+                            ptr[10] = 0;
+                        }
                         printf("Turno del jugador 4\n");
                         jugadores[3].pos = ptr[3];
                         numero = dado();
@@ -707,6 +775,19 @@ int  main(){
                                 printf("Cambio en el sentido de los turnos\n");
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 1;
+                                    ptr[10] = 0;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 sleep(2);
                                 flag3 = 0;
                                 write(pipe43[WRITE], &flag3, sizeof(int));
@@ -804,8 +885,14 @@ int  main(){
             if (pid_padre == getpid()){
                 while (flag2 == 1){
                     read(pipe12[READ], &jugadores[1].turno, sizeof(int));
-                    if (jugadores[1].turno != 0){
+                    if (jugadores[1].turno != 0 && ptr[8] == 1){
                         printf("Turno del jugador 2 (Principal)\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 1;
+                            ptr[8] = 0;
+                            ptr[9] = 0;
+                            ptr[10] = 0;
+                        }
                         jugadores[1].pos = ptr[1];
                         numero = dado();
                         jugadores[1].pos += numero;
@@ -886,6 +973,19 @@ int  main(){
                                     sleep(2);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2);
+                                    if (ptr[11] == 0){
+                                        ptr[11] = 1;
+                                        ptr[7] = 1;
+                                        ptr[8] = 0;
+                                        ptr[9] = 0;
+                                        ptr[10] = 0;
+                                    }else{
+                                        ptr[11] = 0;
+                                        ptr[7] = 1;
+                                        ptr[8] = 1;
+                                        ptr[9] = 1;
+                                        ptr[10] = 1;
+                                    }
                                     mensaje = 3;
                                     write(pipe23[WRITE], &mensaje, sizeof(int));
                                     flag1 = 0;
@@ -995,8 +1095,13 @@ int  main(){
             }else if (pid_hijos[0] == getpid()){
                 while (flag1 == 1){
                     jugadores[0].turno = ptr[6];
-                    if (jugadores[0].turno != 0){
-                        ptr[6] = 1;
+                    if (jugadores[0].turno != 0 && ptr[7] == 1){
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 0;
+                            ptr[9] = 0;
+                            ptr[10] = 1;
+                        }
                         printf("Turno del jugador 1\n");
                         jugadores[0].pos = ptr[0];
                         numero = dado();
@@ -1070,6 +1175,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 1;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -1156,6 +1274,7 @@ int  main(){
                             read(pipe21[READ], &flag1, sizeof(int));
                         }
                     }else{
+                        ptr[6] = 1;
                         mensaje = 2;
                         write(pipe12[WRITE], &mensaje, sizeof(int));
                         read(pipe21[READ], &flag1, sizeof(int));
@@ -1164,8 +1283,14 @@ int  main(){
             }else if (pid_hijos[1] == getpid()){
                 while (flag3 == 1){
                     read(pipe23[READ], &jugadores[2].turno, sizeof(int));
-                    if (jugadores[2].turno != 0){
+                    if (jugadores[2].turno != 0 && ptr[9] == 1){
                         printf("Turno del jugador 3\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 1;
+                            ptr[9] = 0;
+                            ptr[10] = 0;
+                        }
                         jugadores[2].pos = ptr[2];
                         numero = dado();
                         jugadores[2].pos += numero;
@@ -1246,6 +1371,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 0;
+                                    ptr[8] = 1;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 4;
                                 write(pipe34[WRITE], &mensaje, sizeof(int));
                                 flag2 = 0;
@@ -1356,8 +1494,14 @@ int  main(){
             }else if (pid_hijos[2] == getpid()){
                 while (flag4 == 1){
                     read(pipe34[READ], &jugadores[3].turno, sizeof(int));
-                    if (jugadores[3].turno != 0){
+                    if (jugadores[3].turno != 0 && ptr[10] == 1){
                         printf("Turno del jugador 4\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 0;
+                            ptr[9] = 1;
+                            ptr[10] = 0;
+                        }
                         jugadores[3].pos = ptr[3];
                         numero = dado();
                         jugadores[3].pos += numero;
@@ -1431,6 +1575,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 1;
+                                    ptr[10] = 0;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 flag3 = 0;
                                 write(pipe43[WRITE], &flag3, sizeof(int));
                                 flag4 = 0; 
@@ -1527,8 +1684,14 @@ int  main(){
             if (pid_padre == getpid()){
                 while (flag3 == 1){
                     read(pipe23[READ], &jugadores[2].turno, sizeof(int));
-                    if (jugadores[2].turno != 0){
+                    if (jugadores[2].turno != 0 && ptr[9] == 1){
                         printf("Turno del jugador 3 (Principal)\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 1;
+                            ptr[9] = 0;
+                            ptr[10] = 0;
+                        }
                         jugadores[2].pos = ptr[2];
                         numero = dado();
                         jugadores[2].pos += numero;
@@ -1609,6 +1772,19 @@ int  main(){
                                     sleep(2);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2);
+                                    if (ptr[11] == 0){
+                                        ptr[11] = 1;
+                                        ptr[7] = 0;
+                                        ptr[8] = 1;
+                                        ptr[9] = 0;
+                                        ptr[10] = 0;
+                                    }else{
+                                        ptr[11] = 0;
+                                        ptr[7] = 1;
+                                        ptr[8] = 1;
+                                        ptr[9] = 1;
+                                        ptr[10] = 1;
+                                    }
                                     mensaje = 4;
                                     write(pipe34[WRITE], &mensaje, sizeof(int));
                                     flag2 = 0;
@@ -1718,9 +1894,14 @@ int  main(){
             }else if (pid_hijos[0] == getpid()){
                 while (flag1 == 1){
                     jugadores[0].turno = ptr[6];
-                    if (jugadores[0].turno != 0){
-                        ptr[6] = 1;
+                    if (jugadores[0].turno != 0 && ptr[7] == 1){
                         printf("Turno del jugador 1\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 0;
+                            ptr[9] = 0;
+                            ptr[10] = 1;
+                        }
                         jugadores[0].pos = ptr[0];
                         numero = dado();
                         jugadores[0].pos += numero;
@@ -1793,6 +1974,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 1;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -1879,6 +2073,7 @@ int  main(){
                             read(pipe21[READ], &flag1, sizeof(int));
                         }
                     }else{
+                        ptr[6] = 1;
                         mensaje = 2;
                         write(pipe12[WRITE], &mensaje, sizeof(int));
                         read(pipe21[READ], &flag1, sizeof(int));
@@ -1887,8 +2082,14 @@ int  main(){
             }else if (pid_hijos[1] == getpid()){
                 while (flag2 == 1){
                     read(pipe12[READ], &jugadores[1].turno, sizeof(int));
-                    if (jugadores[1].turno != 0){
+                    if (jugadores[1].turno != 0 && ptr[8] == 1){
                         printf("Turno del jugador 2\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 1;
+                            ptr[8] = 0;
+                            ptr[9] = 0;
+                            ptr[10] = 0;
+                        }
                         jugadores[1].pos = ptr[1];
                         numero = dado();
                         jugadores[1].pos += numero;
@@ -1969,6 +2170,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 1;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -2079,8 +2293,14 @@ int  main(){
             }else if (pid_hijos[2] == getpid()){
                 while (flag4 == 1){
                     read(pipe34[READ], &jugadores[3].turno, sizeof(int));
-                    if (jugadores[3].turno != 0){
+                    if (jugadores[3].turno != 0 && ptr[10] == 1){
                         printf("Turno del jugador 4\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 0;
+                            ptr[9] = 1;
+                            ptr[10] = 0;
+                        }
                         jugadores[3].pos = ptr[3];
                         numero = dado();
                         jugadores[3].pos += numero;
@@ -2154,6 +2374,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 1;
+                                    ptr[10] = 0;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 flag3 = 0;
                                 write(pipe43[WRITE], &flag3, sizeof(int));
                                 flag4 = 0; 
@@ -2250,8 +2483,14 @@ int  main(){
             if (pid_padre == getpid()){
                 while (flag4 == 1){
                     read(pipe34[READ], &jugadores[3].turno, sizeof(int));
-                    if (jugadores[3].turno != 0){
+                    if (jugadores[3].turno != 0 && ptr[10] == 1){
                         printf("Turno del jugador 4 (Principal) \n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 0;
+                            ptr[9] = 1;
+                            ptr[10] = 0;
+                        }
                         jugadores[3].pos = ptr[3];
                         numero = dado();
                         jugadores[3].pos += numero;
@@ -2325,6 +2564,19 @@ int  main(){
                                     sleep(2);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2);
+                                    if (ptr[11] == 0){
+                                        ptr[11] = 1;
+                                        ptr[7] = 0;
+                                        ptr[8] = 0;
+                                        ptr[9] = 1;
+                                        ptr[10] = 0;
+                                    }else{
+                                        ptr[11] = 0;
+                                        ptr[7] = 1;
+                                        ptr[8] = 1;
+                                        ptr[9] = 1;
+                                        ptr[10] = 1;
+                                    }
                                     flag3 = 0;
                                     write(pipe43[WRITE], &flag3, sizeof(int));
                                     flag4 = 0; 
@@ -2418,9 +2670,14 @@ int  main(){
             }else if (pid_hijos[0] == getpid()){
                 while (flag1 == 1){
                     jugadores[0].turno = ptr[6];
-                    if (jugadores[0].turno != 0){
-                        ptr[6] = 1;
+                    if (jugadores[0].turno != 0 && ptr[7] == 1){
                         printf("Turno del jugador 1\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 0;
+                            ptr[9] = 0;
+                            ptr[10] = 1;
+                        }
                         jugadores[0].pos = ptr[0];
                         numero = dado();
                         jugadores[0].pos += numero;
@@ -2493,6 +2750,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 1;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 2;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -2579,6 +2849,7 @@ int  main(){
                             read(pipe21[READ], &flag1, sizeof(int));
                         }
                     }else{
+                        ptr[6] = 1;
                         mensaje = 2;
                         write(pipe12[WRITE], &mensaje, sizeof(int));
                         read(pipe21[READ], &flag1, sizeof(int));
@@ -2587,8 +2858,14 @@ int  main(){
             }else if (pid_hijos[1] == getpid()){
                 while (flag2 == 1){
                     read(pipe12[READ], &jugadores[1].turno, sizeof(int));
-                    if (jugadores[1].turno != 0){
+                    if (jugadores[1].turno != 0 && ptr[8] == 1){
                         printf("Turno del jugador 2\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 1;
+                            ptr[8] = 0;
+                            ptr[9] = 0;
+                            ptr[10] = 0;
+                        }
                         jugadores[1].pos = ptr[1];
                         numero = dado();
                         jugadores[1].pos += numero;
@@ -2669,6 +2946,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 1;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 3;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -2779,8 +3069,14 @@ int  main(){
             }else if (pid_hijos[2] == getpid()){
                 while (flag3 == 1){
                     read(pipe23[READ], &jugadores[2].turno, sizeof(int));
-                    if (jugadores[2].turno != 0){
+                    if (jugadores[2].turno != 0 && ptr[9] == 1){
                         printf("Turno del jugador 3\n");
+                        if (ptr[11] == 1){
+                            ptr[7] = 0;
+                            ptr[8] = 1;
+                            ptr[9] = 0;
+                            ptr[10] = 0;
+                        }
                         jugadores[2].pos = ptr[2];
                         numero = dado();
                         jugadores[2].pos += numero;
@@ -2861,6 +3157,19 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 0){
+                                    ptr[11] = 1;
+                                    ptr[7] = 0;
+                                    ptr[8] = 1;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }else{
+                                    ptr[11] = 0;
+                                    ptr[7] = 1;
+                                    ptr[8] = 1;
+                                    ptr[9] = 1;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 4;
                                 write(pipe34[WRITE], &mensaje, sizeof(int));
                                 flag2 = 0;
