@@ -158,6 +158,12 @@ int  main(){
                                     sleep(2);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2);
+                                    if (ptr[11] == 1){
+                                        ptr[7] = 0;
+                                        ptr[8] = 0;
+                                        ptr[9] = 1;
+                                        ptr[10] = 0;
+                                    }
                                     mensaje = 0;
                                     write(pipe12[WRITE], &mensaje, sizeof(int));
                                     read(pipe21[READ], &flag1, sizeof(int));
@@ -351,6 +357,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 0;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -562,6 +574,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 1;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }
                                 mensaje = 0;
                                 write(pipe34[WRITE], &mensaje, sizeof(int));
                                 flag2 = 0;
@@ -767,6 +785,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 0;
+                                    ptr[8] = 1;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }
                                 ptr[6] = 0;
                                 flag3 = 0;
                                 write(pipe43[WRITE], &flag3, sizeof(int));
@@ -963,6 +987,12 @@ int  main(){
                                     sleep(2);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2);
+                                    if (ptr[11] == 1){
+                                        ptr[7] = 0;
+                                        ptr[8] = 0;
+                                        ptr[9] = 0;
+                                        ptr[10] = 1;
+                                    }
                                     mensaje = 0;
                                     write(pipe23[WRITE], &mensaje, sizeof(int));
                                     flag1 = 0;
@@ -1167,6 +1197,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 1;
+                                    ptr[10] = 0;
+                                }
                                 mensaje = 0;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -1361,6 +1397,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 1;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }
                                 mensaje = 0;
                                 write(pipe34[WRITE], &mensaje, sizeof(int));
                                 flag2 = 0;
@@ -1566,6 +1608,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 0;
+                                    ptr[8] = 1;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }
                                 ptr[6] = 0;
                                 flag3 = 0;
                                 write(pipe43[WRITE], &flag3, sizeof(int));
@@ -1762,6 +1810,12 @@ int  main(){
                                     sleep(2);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2);
+                                    if (ptr[11] == 1){
+                                        ptr[7] = 1;
+                                        ptr[8] = 0;
+                                        ptr[9] = 0;
+                                        ptr[10] = 0;
+                                    }
                                     mensaje = 0;
                                     write(pipe34[WRITE], &mensaje, sizeof(int));
                                     flag2 = 0;
@@ -1966,6 +2020,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 1;
+                                    ptr[10] = 0;
+                                }
                                 mensaje = 0;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -2160,6 +2220,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 0;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -2365,6 +2431,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 0;
+                                    ptr[8] = 1;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }
                                 ptr[6] = 0;
                                 flag3 = 0;
                                 write(pipe43[WRITE], &flag3, sizeof(int));
@@ -2555,6 +2627,12 @@ int  main(){
                                     sleep(2);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2);
+                                    if (ptr[11] == 1){
+                                        ptr[7] = 0;
+                                        ptr[8] = 1;
+                                        ptr[9] = 0;
+                                        ptr[10] = 0;
+                                    }
                                     ptr[6] = 0;
                                     flag3 = 0;
                                     write(pipe43[WRITE], &flag3, sizeof(int));
@@ -2742,6 +2820,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 1;
+                                    ptr[10] = 0;
+                                }
                                 mensaje = 0;
                                 write(pipe12[WRITE], &mensaje, sizeof(int));
                                 read(pipe21[READ], &flag1, sizeof(int));
@@ -2936,6 +3020,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 0;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 1;
+                                }
                                 mensaje = 0;
                                 write(pipe23[WRITE], &mensaje, sizeof(int));
                                 flag1 = 0;
@@ -3147,6 +3237,12 @@ int  main(){
                                 sleep(2);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2);
+                                if (ptr[11] == 1){
+                                    ptr[7] = 1;
+                                    ptr[8] = 0;
+                                    ptr[9] = 0;
+                                    ptr[10] = 0;
+                                }
                                 mensaje = 0;
                                 write(pipe34[WRITE], &mensaje, sizeof(int));
                                 flag2 = 0;

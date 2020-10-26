@@ -54,8 +54,16 @@ void string(int n1, int n2, int n3, int n4, int pos, char *str){
 }
 
 void concateno2(char *tablero,int n,int n1, int n2, int n3, int n4, char *str, int invertido){
+	int pos;
 	if(n==1){
-		int pos=20;
+		if(invertido==1){
+			pos=10;
+
+
+		}
+		else{
+			pos=20;
+		}
 		string(n1,n2,n3,n4,pos,str);
 		strcat(tablero,"|");
 		strcat(tablero,str);
@@ -65,7 +73,14 @@ void concateno2(char *tablero,int n,int n1, int n2, int n3, int n4, char *str, i
 		strcat(tablero,"\n|____|");
 	}
 	else{
-		int pos=10;
+		if(invertido==1){
+			pos=20;
+		}
+		else{
+			pos=10;
+
+		}
+		
 		strcat(tablero,"                                        ");
 		string(n1,n2,n3,n4,pos,str);
 		strcat(tablero,"|");
@@ -76,7 +91,6 @@ void concateno2(char *tablero,int n,int n1, int n2, int n3, int n4, char *str, i
 		strcat(tablero,"\n _______________________________________|____|");
 	}
 }
-
 void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str, int invertido){
 	int pos=1;
 	int largo=9;
@@ -140,25 +154,25 @@ void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str, int i
 	if(n==2){
 		strcat(tablero,"_______________________________________ \n");
 		if(invertido==1){
-			if(n1>10 || n1<19){
+			if(n1>10 && n1<=19){
 				n1=n1-10;
 			}
 			else{
 				n1=0;
 			}
-			if(n2>10 || n2<19){
+			if(n2>10 && n2<=19){
 				n2=n2-10;
 			}
 			else{
 				n2=0;
 			}
-			if(n3>10 || n3<19){
+			if(n3>10 && n3<=19){
 				n3=n3-10;
 			}
 			else{
 				n3=0;
 			}
-			if(n4>10 || n4<19){
+			if(n4>10 && n4<=19){
 				n4=n4-10;
 			}
 			else{
@@ -167,32 +181,31 @@ void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str, int i
 		}
 		if(invertido==0){
 
-		    if(n1>10 || n1<19){
+		    if(n1>10 && n1<=19){
 			    n1=20-n1;
 		    }
 		    else{
 			    n1=0;
 		    }
-		    if(n1>10 || n1<19){
+		    if(n2>10 && n2<=19){
 			    n2=20-n2;
 		    }
 		    else{
 			    n2=0;
 		    }
-		    if(n1>10 || n1<19){
+		    if(n3>10 && n3<=19){
 			    n3=20-n3;
 		    }
 		    else{
 			    n3=0;
 		    }
-		    if(n1>10 || n1<19){
+		    if(n4>10 && n4<=19){
 			    n4=20-n4;
 		    }
 		    else{
 			    n4=0;
 		    }
 		}
-		
 	}
 	if(n==3){
 		if (invertido==1){
@@ -375,7 +388,6 @@ void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str, int i
 	strcat(tablero,intermedio);
 	free(intermedio);
 }
-
 void tablero(int n1,int n2, int n3, int n4, int invertido){
     char *str=(char *)malloc(sizeof(char)*6);
 	char *tablero=(char *)malloc(sizeof(char)*700);
@@ -388,7 +400,6 @@ void tablero(int n1,int n2, int n3, int n4, int invertido){
 	free(tablero);
 	free(str);
 }
-
 int dado(){
     srand(time(NULL));
     int numero = (rand() % 6) + 1;
@@ -525,8 +536,6 @@ int primero(int pos1, int pos2, int pos3, int pos4){
 	}
 
 	if (posicion < pos4){
-		primero1 = 3;
-		posicion = pos4;
 	}
 	return primero1;
 }
