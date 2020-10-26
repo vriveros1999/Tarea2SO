@@ -102,7 +102,7 @@ int  main(){
                             flag1 = 0;
                             jugadores[0].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 1");
+                            printf("El ganador es el jugador 1\n");
                             return 0;
                         }
                         ptr[0] = jugadores[0].pos;
@@ -145,7 +145,7 @@ int  main(){
                                         flag1 = 0;
                                         jugadores[0].pos = 29;
                                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                        printf("El ganador es el jugador 1");
+                                        printf("El ganador es el jugador 1\n");
                                         return 0;
                                     }
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -295,7 +295,9 @@ int  main(){
                             flag2 = 0;
                             jugadores[1].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 2");
+                            printf("El ganador es el jugador 2\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -342,7 +344,9 @@ int  main(){
                                     flag2 = 0;
                                     jugadores[1].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 2");
+                                    printf("El ganador es el jugador 2\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -512,7 +516,9 @@ int  main(){
                             flag3 = 0;
                             jugadores[2].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 3");
+                            printf("El ganador es el jugador 3\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -559,7 +565,9 @@ int  main(){
                                     flag3 = 0;
                                     jugadores[2].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 3");
+                                    printf("El ganador es el jugador 3\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -729,7 +737,9 @@ int  main(){
                             flag4 = 0;
                             jugadores[3].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 4");
+                            printf("El ganador es el jugador 4\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -772,7 +782,9 @@ int  main(){
                                     flag4 = 0;
                                     jugadores[3].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 4");
+                                    printf("El ganador es el jugador 4\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -925,7 +937,7 @@ int  main(){
                             flag2 = 0;
                             jugadores[1].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 2");
+                            printf("El ganador es el jugador 2\n");
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -972,7 +984,7 @@ int  main(){
                                         flag2 = 0;
                                         jugadores[1].pos = 29;
                                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                        printf("El ganador es el jugador 2");
+                                        printf("El ganador es el jugador 2\n");
                                         return 0;
                                     }
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1141,7 +1153,9 @@ int  main(){
                             flag1 = 0;
                             jugadores[0].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 1");
+                            printf("El ganador es el jugador 1\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         ptr[0] = jugadores[0].pos;
@@ -1184,7 +1198,9 @@ int  main(){
                                     flag1 = 0;
                                     jugadores[0].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 1");
+                                    printf("El ganador es el jugador 1\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1335,7 +1351,9 @@ int  main(){
                             flag3 = 0;
                             jugadores[2].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 3");
+                            printf("El ganador es el jugador 3\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -1382,7 +1400,9 @@ int  main(){
                                     flag3 = 0;
                                     jugadores[2].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 3");
+                                    printf("El ganador es el jugador 3\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1552,7 +1572,9 @@ int  main(){
                             flag4 = 0;
                             jugadores[3].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 4");
+                            printf("El ganador es el jugador 4\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -1595,7 +1617,9 @@ int  main(){
                                     flag4 = 0;
                                     jugadores[3].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 4");
+                                    printf("El ganador es el jugador 4\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1748,7 +1772,7 @@ int  main(){
                             flag3 = 0;
                             jugadores[2].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 3");
+                            printf("El ganador es el jugador 3\n");
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -1795,7 +1819,7 @@ int  main(){
                                         flag3 = 0;
                                         jugadores[2].pos = 29;
                                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                        printf("El ganador es el jugador 3");
+                                        printf("El ganador es el jugador 3\n");
                                         return 0;
                                     }
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1964,7 +1988,9 @@ int  main(){
                             flag1 = 0;
                             jugadores[0].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 1");
+                            printf("El ganador es el jugador 1\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         ptr[0] = jugadores[0].pos;
@@ -2007,7 +2033,9 @@ int  main(){
                                     flag1 = 0;
                                     jugadores[0].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 1");
+                                    printf("El ganador es el jugador 1\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2158,7 +2186,9 @@ int  main(){
                             flag2 = 0;
                             jugadores[1].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 2");
+                            printf("El ganador es el jugador 2\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -2205,7 +2235,9 @@ int  main(){
                                     flag2 = 0;
                                     jugadores[1].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 2");
+                                    printf("El ganador es el jugador 2\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2375,7 +2407,9 @@ int  main(){
                             flag4 = 0;
                             jugadores[3].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 4");
+                            printf("El ganador es el jugador 4\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -2418,7 +2452,9 @@ int  main(){
                                     flag4 = 0;
                                     jugadores[3].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 4");
+                                    printf("El ganador es el jugador 4\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2571,7 +2607,7 @@ int  main(){
                             flag4 = 0;
                             jugadores[3].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 4");
+                            printf("El ganador es el jugador 4\n");
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -2614,7 +2650,7 @@ int  main(){
                                         flag4 = 0;
                                         jugadores[3].pos = 29;
                                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                        printf("El ganador es el jugador 4");
+                                        printf("El ganador es el jugador 4\n");
                                         return 0;
                                     }
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2764,7 +2800,9 @@ int  main(){
                             flag1 = 0;
                             jugadores[0].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 1");
+                            printf("El ganador es el jugador 1\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         ptr[0] = jugadores[0].pos;
@@ -2807,7 +2845,9 @@ int  main(){
                                     flag1 = 0;
                                     jugadores[0].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 1");
+                                    printf("El ganador es el jugador 1\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2958,7 +2998,9 @@ int  main(){
                             flag2 = 0;
                             jugadores[1].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 2");
+                            printf("El ganador es el jugador 2\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -3005,7 +3047,9 @@ int  main(){
                                     flag2 = 0;
                                     jugadores[1].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 2");
+                                    printf("El ganador es el jugador 2\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -3175,7 +3219,7 @@ int  main(){
                             flag3 = 0;
                             jugadores[2].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 3");
+                            printf("El ganador es el jugador 3\n");
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -3222,7 +3266,9 @@ int  main(){
                                     flag3 = 0;
                                     jugadores[2].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 3");
+                                    printf("El ganador es el jugador 3\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
