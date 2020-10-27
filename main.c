@@ -95,7 +95,7 @@ int  main(){
                             ptr[10] = 1;
                         }
                         jugadores[0].pos = ptr[0];
-                        numero = 6;//dado();
+                        numero = dado();
                         jugadores[0].pos += numero;
                         if (jugadores[0].pos >= 29){
                             ptr[4] = 0;
