@@ -109,7 +109,7 @@ int  main(){
                             flag1 = 0;
                             jugadores[0].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 1");
+                            printf("El ganador es el jugador 1\n");
                             return 0;
                         }
                         ptr[0] = jugadores[0].pos;
@@ -146,13 +146,13 @@ int  main(){
                                 }else if(efecto == 3){
                                     printf("Jugador avanza 1 espacio\n");
                                     sleep(2);
-                                    ptr[0] = jugador_avanza(jugadores[0].pos, 1, 1);
+                                    ptr[0] = jugador_avanza(jugadores[0].pos, 1, 1, ptr[5]);
                                     if (ptr[0] >= 29){
                                         ptr[4] = 0;
                                         flag1 = 0;
                                         jugadores[0].pos = 29;
                                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                        printf("El ganador es el jugador 1");
+                                        printf("El ganador es el jugador 1\n");
                                         return 0;
                                     }
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -212,9 +212,9 @@ int  main(){
                                 }else if (efecto == 4 || efecto == 5){
                                     printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                     sleep(2);
-                                    ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                    ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
-                                    ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                    ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                    ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
+                                    ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2); 
                                     mensaje = 2;
@@ -302,7 +302,9 @@ int  main(){
                             flag2 = 0;
                             jugadores[1].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 2");
+                            printf("El ganador es el jugador 2\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -343,13 +345,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1, 1);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1, 1, ptr[5]);
                                 if (ptr[1] >= 29){
                                     ptr[4] = 0;
                                     flag2 = 0;
                                     jugadores[1].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 2");
+                                    printf("El ganador es el jugador 2\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -419,9 +423,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 mensaje = 3;
@@ -519,7 +523,9 @@ int  main(){
                             flag3 = 0;
                             jugadores[2].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 3");
+                            printf("El ganador es el jugador 3\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -560,13 +566,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1, 1);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1, 1, ptr[5]);
                                 if (ptr[2] >= 29){
                                     ptr[4] = 0;
                                     flag3 = 0;
                                     jugadores[2].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 3");
+                                    printf("El ganador es el jugador 3\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -636,9 +644,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 mensaje = 4;
@@ -736,7 +744,9 @@ int  main(){
                             flag4 = 0;
                             jugadores[3].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 4");
+                            printf("El ganador es el jugador 4\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -773,13 +783,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1, 1);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1, 1, ptr[5]);
                                 if (ptr[3] >= 29){
                                     ptr[4] = 0;
                                     flag4 = 0;
                                     jugadores[3].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 4");
+                                    printf("El ganador es el jugador 4\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -842,9 +854,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 flag3 = 0;
@@ -932,7 +944,7 @@ int  main(){
                             flag2 = 0;
                             jugadores[1].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 2");
+                            printf("El ganador es el jugador 2\n");
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -973,13 +985,13 @@ int  main(){
                                 }else if(efecto == 3){
                                     printf("Jugador avanza 1 espacio\n");
                                     sleep(2);
-                                    ptr[1] = jugador_avanza(jugadores[1].pos, 1, 1);
+                                    ptr[1] = jugador_avanza(jugadores[1].pos, 1, 1, ptr[5]);
                                     if (ptr[1] >= 29){
                                         ptr[4] = 0;
                                         flag2 = 0;
                                         jugadores[1].pos = 29;
                                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                        printf("El ganador es el jugador 2");
+                                        printf("El ganador es el jugador 2\n");
                                         return 0;
                                     }
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1047,9 +1059,9 @@ int  main(){
                                 }else if (efecto == 4 || efecto == 5){
                                     printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                     sleep(2);
-                                    ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                    ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
-                                    ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                    ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                    ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
+                                    ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2); 
                                     mensaje = 3;
@@ -1148,7 +1160,9 @@ int  main(){
                             flag1 = 0;
                             jugadores[0].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 1");
+                            printf("El ganador es el jugador 1\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         ptr[0] = jugadores[0].pos;
@@ -1185,13 +1199,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1, 1);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1, 1, ptr[5]);
                                 if (ptr[0] >= 29){
                                     ptr[4] = 0;
                                     flag1 = 0;
                                     jugadores[0].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 1");
+                                    printf("El ganador es el jugador 1\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1253,9 +1269,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 mensaje = 2;
@@ -1342,7 +1358,9 @@ int  main(){
                             flag3 = 0;
                             jugadores[2].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 3");
+                            printf("El ganador es el jugador 3\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -1383,13 +1401,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1, 1);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1, 1, ptr[5]);
                                 if (ptr[2] >= 29){
                                     ptr[4] = 0;
                                     flag3 = 0;
                                     jugadores[2].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 3");
+                                    printf("El ganador es el jugador 3\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1459,9 +1479,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 mensaje = 4;
@@ -1559,7 +1579,9 @@ int  main(){
                             flag4 = 0;
                             jugadores[3].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 4");
+                            printf("El ganador es el jugador 4\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -1596,13 +1618,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1, 1);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1, 1, ptr[5]);
                                 if (ptr[3] >= 29){
                                     ptr[4] = 0;
                                     flag4 = 0;
                                     jugadores[3].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 4");
+                                    printf("El ganador es el jugador 4\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1665,9 +1689,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 flag3 = 0;
@@ -1755,7 +1779,7 @@ int  main(){
                             flag3 = 0;
                             jugadores[2].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 3");
+                            printf("El ganador es el jugador 3\n");
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -1796,13 +1820,13 @@ int  main(){
                                 }else if(efecto == 3){
                                     printf("Jugador avanza 1 espacio\n");
                                     sleep(2);
-                                    ptr[2] = jugador_avanza(jugadores[2].pos, 1, 1);
+                                    ptr[2] = jugador_avanza(jugadores[2].pos, 1, 1, ptr[5]);
                                     if (ptr[2] >= 29){
                                         ptr[4] = 0;
                                         flag3 = 0;
                                         jugadores[2].pos = 29;
                                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                        printf("El ganador es el jugador 3");
+                                        printf("El ganador es el jugador 3\n");
                                         return 0;
                                     }
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -1870,9 +1894,9 @@ int  main(){
                                 }else if (efecto == 4 || efecto == 5){
                                     printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                     sleep(2);
-                                    ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                    ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                    ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                    ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                    ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                    ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2); 
                                     mensaje = 4;
@@ -1971,7 +1995,9 @@ int  main(){
                             flag1 = 0;
                             jugadores[0].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 1");
+                            printf("El ganador es el jugador 1\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         ptr[0] = jugadores[0].pos;
@@ -2008,13 +2034,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1, 1);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1, 1, ptr[5]);
                                 if (ptr[0] >= 29){
                                     ptr[4] = 0;
                                     flag1 = 0;
                                     jugadores[0].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 1");
+                                    printf("El ganador es el jugador 1\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2076,9 +2104,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 mensaje = 2;
@@ -2165,7 +2193,9 @@ int  main(){
                             flag2 = 0;
                             jugadores[1].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 2");
+                            printf("El ganador es el jugador 2\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -2206,13 +2236,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1, 1);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1, 1, ptr[5]);
                                 if (ptr[1] >= 29){
                                     ptr[4] = 0;
                                     flag2 = 0;
                                     jugadores[1].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 2");
+                                    printf("El ganador es el jugador 2\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2282,9 +2314,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 mensaje = 3;
@@ -2382,7 +2414,9 @@ int  main(){
                             flag4 = 0;
                             jugadores[3].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 4");
+                            printf("El ganador es el jugador 4\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -2419,13 +2453,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1, 1);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1, 1, ptr[5]);
                                 if (ptr[3] >= 29){
                                     ptr[4] = 0;
                                     flag4 = 0;
                                     jugadores[3].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 4");
+                                    printf("El ganador es el jugador 4\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2488,9 +2524,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 flag3 = 0;
@@ -2578,7 +2614,7 @@ int  main(){
                             flag4 = 0;
                             jugadores[3].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 4");
+                            printf("El ganador es el jugador 4\n");
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -2615,13 +2651,13 @@ int  main(){
                                 }else if(efecto == 3){
                                     printf("Jugador avanza 1 espacio\n");
                                     sleep(2);
-                                    ptr[3] = jugador_avanza(jugadores[3].pos, 1, 1);
+                                    ptr[3] = jugador_avanza(jugadores[3].pos, 1, 1, ptr[5]);
                                     if (ptr[3] >= 29){
                                         ptr[4] = 0;
                                         flag4 = 0;
                                         jugadores[3].pos = 29;
                                         tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                        printf("El ganador es el jugador 4");
+                                        printf("El ganador es el jugador 4\n");
                                         return 0;
                                     }
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2682,9 +2718,9 @@ int  main(){
                                 }else if (efecto == 4 || efecto == 5){
                                     printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                     sleep(2);
-                                    ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                    ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                    ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
+                                    ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                    ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                    ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
                                     tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                     sleep(2); 
                                     flag3 = 0;
@@ -2771,7 +2807,9 @@ int  main(){
                             flag1 = 0;
                             jugadores[0].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 1");
+                            printf("El ganador es el jugador 1\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         ptr[0] = jugadores[0].pos;
@@ -2808,13 +2846,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1, 1);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1, 1, ptr[5]);
                                 if (ptr[0] >= 29){
                                     ptr[4] = 0;
                                     flag1 = 0;
                                     jugadores[0].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 1");
+                                    printf("El ganador es el jugador 1\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -2876,9 +2916,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 mensaje = 2;
@@ -2965,7 +3005,9 @@ int  main(){
                             flag2 = 0;
                             jugadores[1].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 2");
+                            printf("El ganador es el jugador 2\n");
+                            sleep(2);
+                            kill(0, SIGKILL);
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -3006,13 +3048,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1, 1);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1, 1, ptr[5]);
                                 if (ptr[1] >= 29){
                                     ptr[4] = 0;
                                     flag2 = 0;
                                     jugadores[1].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 2");
+                                    printf("El ganador es el jugador 2\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -3082,9 +3126,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1,2, ptr[5]);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 mensaje = 3;
@@ -3182,7 +3226,7 @@ int  main(){
                             flag3 = 0;
                             jugadores[2].pos = 29;
                             tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                            printf("El ganador es el jugador 3");
+                            printf("El ganador es el jugador 3\n");
                             return 0;
                         }
                         jugadores[0].pos = ptr[0];
@@ -3223,13 +3267,15 @@ int  main(){
                             }else if(efecto == 3){
                                 printf("Jugador avanza 1 espacio\n");
                                 sleep(2);
-                                ptr[2] = jugador_avanza(jugadores[2].pos, 1, 1);
+                                ptr[2] = jugador_avanza(jugadores[2].pos, 1, 1, ptr[5]);
                                 if (ptr[2] >= 29){
                                     ptr[4] = 0;
                                     flag3 = 0;
                                     jugadores[2].pos = 29;
                                     tablero(jugadores[0].pos,jugadores[1].pos,jugadores[2].pos,jugadores[3].pos, ptr[5]);
-                                    printf("El ganador es el jugador 3");
+                                    printf("El ganador es el jugador 3\n");
+                                    sleep(2);
+                                    kill(0, SIGKILL);
                                     return 0;
                                 }
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
@@ -3299,9 +3345,9 @@ int  main(){
                             }else if (efecto == 4 || efecto == 5){
                                 printf("Jugadores avanzan hasta su proxima casilla blanca\n");
                                 sleep(2);
-                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2);
-                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2);
-                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2);
+                                ptr[0] = jugador_avanza(jugadores[0].pos, 1,2, ptr[5]);
+                                ptr[1] = jugador_avanza(jugadores[1].pos, 1,2, ptr[5]);
+                                ptr[3] = jugador_avanza(jugadores[3].pos, 1,2, ptr[5]);
                                 tablero(ptr[0], ptr[1], ptr[2], ptr[3], ptr[5]);
                                 sleep(2); 
                                 mensaje = 4;

@@ -513,23 +513,41 @@ int jugador_retrocede(int posicion, int espacios){
 Return: Retorna la posicion que quedara el jugador luego de avanzar.
 Descripcion: Avanza un jugador un numero de veces, recibe su pocision, los espacios que avanzara, y el estado del tablero
 */
-int jugador_avanza(int posicion, int espacios,int opcion){
+int jugador_avanza(int posicion, int espacios,int opcion, int invertido){
 	int avanza;
 	if(opcion==1){
 		avanza = posicion+espacios;
 	    return avanza;
 	}
 	if(opcion==2){
-		if(posicion==2 || posicion==4 || posicion==6 || posicion==12 || posicion==14 || posicion==16){
-			avanza=posicion+2;
+		if (invertido==0){
+			if(posicion==2 || posicion==4 || posicion==6 || posicion==12 || posicion==14 || posicion==16){
+			     avanza=posicion+2;
+		    }
+		    else if(posicion >= 21){
+			    return posicion;
+		    }
+		    else {
+			    avanza=posicion+espacios;
+		    }
+		    
+
 		}
-		else if(posicion >= 21){
-			return posicion;
-		}
-		else {
-			avanza=posicion+espacios;
+		else if(invertido==1){
+			if(posicion<8){
+			     avanza=9;
+		    }
+		    else if( posicion==12 ||  posicion==14  || posicion==16 || posicion==22 || posicion==24 || posicion==26){
+		    	avanza=posicion+2;
+		    }
+		    else{
+		    	avanza=posicion+espacios;
+
+		    }
+
 		}
 		return avanza;
+
 	}
 	return 0;
 }
