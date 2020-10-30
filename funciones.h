@@ -11,15 +11,21 @@
 #include <sys/shm.h>
 #include <signal.h>
 
+//typedef struct: Define struct de los jugadores, almacenando posicion y turno.
 typedef struct {
     int pos;
     int turno;
 }Jugador;
-
+/* int inicializar_posiciones()
+Funcion que inicializa las posiciones en el tablero. Solamente retorna 1. 
+*/
 int inicializar_posiciones(){
     return 1;
 }
-
+/* void string (int n1, int n2, int n3, int n4, int pos, char *str)
+Return: Funcion no retorna nada
+Descripcion: Recibe la posicion de los 4 jugadores y retorna un string que contiene aquellos jugadores que coinciden con la posicion
+*/
 void string(int n1, int n2, int n3, int n4, int pos, char *str){
 	int resto;
 	for(int x=0; x<5; x++){
@@ -52,7 +58,10 @@ void string(int n1, int n2, int n3, int n4, int pos, char *str){
 		resto--;
 	}
 }
-
+/* void concateno2(char *tablero,int n,int n1, int n2, int n3, int n4, char *str, int invertido)
+Return: Funcion no retorna nada
+Descripcion: Construye celdas individuales, recibe las pocisiones, el estado del tablero y el puntero que almacena el tablero
+*/ 
 void concateno2(char *tablero,int n,int n1, int n2, int n3, int n4, char *str, int invertido){
 	int pos;
 	if(n==1){
@@ -91,6 +100,10 @@ void concateno2(char *tablero,int n,int n1, int n2, int n3, int n4, char *str, i
 		strcat(tablero,"\n _______________________________________|____|");
 	}
 }
+/* void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str, int invertido)
+Return: Funcion no retorna nada
+Descripcion: Construye las filas del tablero, recibe las pocisiones, el estado del tablero y el puntero que almacena el tablero
+*/
 void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str, int invertido){
 	int pos=1;
 	int largo=9;
@@ -388,6 +401,10 @@ void concateno(char *tablero,int n,int n1,int n2,int n3,int n4, char *str, int i
 	strcat(tablero,intermedio);
 	free(intermedio);
 }
+/* void tablero(int n1,int n2, int n3, int n4, int invertido)
+Return: Funcion no retorna nada
+Descripcion: Llama a las funciones que construyen cada fila del tablero las veces necesarias
+*/
 void tablero(int n1,int n2, int n3, int n4, int invertido){
     char *str=(char *)malloc(sizeof(char)*6);
 	char *tablero=(char *)malloc(sizeof(char)*700);
@@ -400,6 +417,11 @@ void tablero(int n1,int n2, int n3, int n4, int invertido){
 	free(tablero);
 	free(str);
 }
+/* 
+int dado()
+Return: Retorna numero al azar de un dado.
+Descripcion: Crea un numero al azar para simular un dado y imprime el numero.
+*/
 int dado(){
     srand(time(NULL));
     int numero = (rand() % 6) + 1;
@@ -407,7 +429,10 @@ int dado(){
     printf("El numero obtenido es: %d\n", numero);
     return numero;
 }
-
+/* int verificar_signo(int posicion, int tablero)
+Return: Retorna un numero relacionada al signo en que cayo el jugador.
+Descripcion: Verifica si un jugador cayo en un signo, retorna 1 si es ?, 2 si es ?? o 0 si no cae en signo.
+*/
 int verificar_signo(int posicion, int tablero){
 	if (tablero == 0){
 		if (posicion == 3 || posicion == 5 || posicion == 7 || posicion == 13 || posicion == 15 || posicion == 22 || posicion == 24 || posicion == 26 || posicion == 28){
@@ -428,7 +453,10 @@ int verificar_signo(int posicion, int tablero){
 	return 0;
 	
 }
-
+/* int jugador_desea(int signo)
+Return: Retorna el numero con la respuesta del jugador.
+Descripcion: Pregunta al jugador si quiere activar el efecto y devuelve su respuesta.
+*/
 int jugador_desea(int signo){
 	int desea;
 	if (signo == 1){
@@ -448,7 +476,10 @@ int jugador_desea(int signo){
 		return 2;
 	}
 }
-
+/* int efecto_aleatorio(int signo)
+Return: Retorna un numero al azar con el efecto asignado.
+Descripcion: Crea un numero al azar para asignar el efecto que realizara el jugador. Depende si es ? o ??.
+*/
 int efecto_aleatorio(int signo){
 	int numero;
 	if (signo == 1){
@@ -462,7 +493,10 @@ int efecto_aleatorio(int signo){
 	}
 	return 0;
 }
-
+/* int jugador_retrocede(int posicion, int espacios)
+Return: Retorna la posicion que quedara el jugador luego de retroceder.
+Descripcion: Funcion que retrocede espacion a un jugador asignado.
+*/
 int jugador_retrocede(int posicion, int espacios){
 	int retrocedio;
 	if (posicion == 1){
@@ -475,6 +509,10 @@ int jugador_retrocede(int posicion, int espacios){
 	return retrocedio;
 }
 
+/* int jugador_avanza(int posicion, int espacios,int opcion)
+Return: Retorna la posicion que quedara el jugador luego de avanzar.
+Descripcion: Avanza un jugador un numero de veces, recibe su pocision, los espacios que avanzara, y el estado del tablero
+*/
 int jugador_avanza(int posicion, int espacios,int opcion){
 	int avanza;
 	if(opcion==1){
@@ -495,7 +533,10 @@ int jugador_avanza(int posicion, int espacios,int opcion){
 	}
 	return 0;
 }
-
+/* int ultimo(int pos1, int pos2, int pos3, int pos4)
+Return: Retorna el jugador que va en ultimo lugar en el tablero.
+Descripcion: Descubre al jugador que va en ultimo lugar en el tablero.
+*/
 int ultimo(int pos1, int pos2, int pos3, int pos4){
 	int ultimo1 = 0;
 	int posicion;
@@ -518,7 +559,10 @@ int ultimo(int pos1, int pos2, int pos3, int pos4){
 	}
 	return ultimo1;
 }
-
+/* int primero(int pos1, int pos2, int pos3, int pos4)
+Return: Retorna el jugador que va en primer lugar en el tablero.
+Descripcion: Descubre al jugador que va en primer lugar en el tablero.
+*/
 int primero(int pos1, int pos2, int pos3, int pos4){
 	int primero1 = 0;
 	int posicion;

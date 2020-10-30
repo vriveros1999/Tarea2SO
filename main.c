@@ -10,6 +10,8 @@ int  main(){
     int pipe21[2], pipe23[2], pipe24[2];
     int pipe31[2], pipe32[2], pipe34[2];
     int pipe41[2], pipe42[2], pipe43[2];
+
+    // Variables requeridas para uso de memoria compartida.
     key_t clave;
     long int id;
     int *ptr = NULL;
@@ -20,6 +22,7 @@ int  main(){
     id = shmget(clave,sizeof(int)*100,0777|IPC_CREAT);
 	ptr = (int *)shmat(id,(char *)0,0);
 
+    // Declaracion de pipes para su posterior uso
     pipe(pipe12);
     pipe(pipe13);
     pipe(pipe14);
@@ -42,6 +45,7 @@ int  main(){
     printf("5. Salir del juego\n");
     scanf("%d",&op);
 
+    // Creacion de los 3 hijos del padre
     for(int i=0; i<3; i++){
         pid = fork();
         if(pid<0){
@@ -58,6 +62,8 @@ int  main(){
     jugadores[1].pos = inicializar_posiciones();
     jugadores[2].pos = inicializar_posiciones();
     jugadores[3].pos = inicializar_posiciones();
+
+    // Creacion de variables en memoria compartida
     ptr[0] = jugadores[0].pos;
     ptr[1] = jugadores[1].pos;
     ptr[2] = jugadores[2].pos;
@@ -81,6 +87,7 @@ int  main(){
         }
     }
 
+    // Comienzo del juego
     while(ptr[4] == 1){
         if (op == 1){
             if (pid_padre == getpid()){
@@ -3383,6 +3390,7 @@ int  main(){
         flag4 = 1;
     }
     
+    // Cierre de pipes, liberacion de memoria y memoria compartida.
     close(pipe12[READ]);
     close(pipe12[WRITE]);
     close(pipe13[READ]);
